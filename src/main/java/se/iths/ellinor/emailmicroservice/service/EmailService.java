@@ -1,32 +1,32 @@
 package se.iths.ellinor.emailmicroservice.service;
 
 import org.springframework.stereotype.Service;
-import se.iths.ellinor.emailmicroservice.dto.OrderConfirmationMessage;
+import se.iths.ellinor.emailmicroservice.dto.OrderConfirmationDto;
 import se.iths.ellinor.emailmicroservice.dto.OrderItemDto;
 
 @Service
 public class EmailService {
 
-    public void sendOrderConfirmation(OrderConfirmationMessage message) {
+    public void sendOrderConfirmation(OrderConfirmationDto message) {
         String body = buildEmailBody(message);
     }
 
-    private String buildEmailBody(OrderConfirmationMessage message) {
+    private String buildEmailBody(OrderConfirmationDto message) {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append("Tack för din beställning!\n\n");
 
-        for (OrderItemDto item : message.getItems()) {
-            stringBuilder.append(item.getProductName())
+        for (OrderItemDto item : message.items()) {
+            stringBuilder.append(item.productName())
                     .append(" x ")
-                    .append(item.getQuantity())
+                    .append(item.quantity())
                     .append(" - ")
-                    .append(item.getPrice())
+                    .append(item.price())
                     .append("\n");
         }
 
         stringBuilder.append("\nTotal: ")
-                .append(message.getTotalPrice());
+                .append(message.totalPrice());
         return stringBuilder.toString();
     }
 }
