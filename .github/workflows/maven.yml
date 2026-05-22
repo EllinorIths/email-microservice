@@ -31,7 +31,7 @@ jobs:
         run: mvn -B package --file pom.xml
 
       - name: Set up Maven settings
-        uses: s4u/maven-settings-action@v3
+        uses: s4u/maven-settings-action@v2
         with:
           servers: |
             [{
