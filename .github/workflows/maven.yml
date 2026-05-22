@@ -19,6 +19,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+      packages: read
+
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 17
@@ -31,7 +35,7 @@ jobs:
         run: mvn -B package --file pom.xml
 
       - name: Set up Maven settings
-        uses: s4u/maven-settings-action@v2
+        uses: s4u/maven-settings-action@v4.0.0
         with:
           servers: |
             [{
