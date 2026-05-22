@@ -79,8 +79,12 @@
         <repository>
             <id>github</id>
             <url>https://maven.pkg.github.com/johan969/spring-messenger</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
     </repositories>
+
 
     <build>
         <plugins>
