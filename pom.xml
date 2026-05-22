@@ -71,9 +71,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
-        
+
 
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/johan969/spring-messenger</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
