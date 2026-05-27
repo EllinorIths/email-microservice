@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitConfig {
 
-    public static final String QUEUE = "order-email-queue";
-    
+    public static final String QUEUE = "email.queue";
+
     @Bean
     public Queue orderEmailQueue() {
         return new Queue(QUEUE);
