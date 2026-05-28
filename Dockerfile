@@ -5,7 +5,7 @@ WORKDIR /app
 COPY . .
 
 RUN mkdir -p /root/.m2 && \
-echo "<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0">
+echo '<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0">
 <servers>
 <server>
 <id>github</id>
@@ -13,7 +13,7 @@ echo "<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0">
 <password>'"$MY_GITHUB_TOKEN"'</password>
 </server>
 </servers>
-</settings>" > /root/.m2/settings.xml
+</settings>' > /root/.m2/settings.xml
 
 
 RUN mvn clean package -DskipTests
