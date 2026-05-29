@@ -1,12 +1,14 @@
 package se.iths.ellinor.emailmicroservice.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import se.iths.ellinor.emailmicroservice.dto.OrderConfirmationDto;
 import se.iths.ellinor.emailmicroservice.dto.OrderItemDto;
 import se.iths.johan.springmessenger.model.Email;
 import se.iths.johan.springmessenger.service.MessageService;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class EmailService {
@@ -22,6 +24,11 @@ public class EmailService {
         email.setSubject("Orderbekräftelse");
         email.setMessage(body);
 
+        log.info("Email: " + email);
+        log.info("Email body: " + body);
+
+
+        System.out.println("BODY: " + body);
         System.out.println("EMAIL: " + email);
 
         messageService.send(email);
