@@ -15,7 +15,13 @@ public class OrderEmailSubscriber {
 
     @RabbitListener(queues = RabbitConfig.QUEUE)
     public void subscribe(OrderConfirmationDto message) {
-        emailService.sendOrderConfirmation(message);
+        try {
+            emailService.sendOrderConfirmation(message);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         System.out.println("MESSAGE RECEIVED: " + message);
     }
 }

@@ -5,9 +5,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public record OrderConfirmationDto(
-        String customerEmail,
+        String customerName,
         Long id,
         List<OrderItemDto> items,
+        BigDecimal lineTotal,
         BigDecimal totalPrice,
         LocalDateTime orderDate
 ) {

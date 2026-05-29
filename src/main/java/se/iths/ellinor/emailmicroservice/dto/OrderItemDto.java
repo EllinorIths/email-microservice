@@ -3,8 +3,10 @@ package se.iths.ellinor.emailmicroservice.dto;
 import java.math.BigDecimal;
 
 public record OrderItemDto(
-        String productName,
+        Long productId,
+        String name,
+        BigDecimal price,
         int quantity,
-        BigDecimal price
+        BigDecimal lineTotal
 ) {
 }

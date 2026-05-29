@@ -7,8 +7,6 @@ import se.iths.ellinor.emailmicroservice.dto.OrderItemDto;
 import se.iths.johan.springmessenger.model.Email;
 import se.iths.johan.springmessenger.service.MessageService;
 
-import java.math.BigDecimal;
-
 @Service
 @RequiredArgsConstructor
 public class EmailService {
@@ -20,9 +18,11 @@ public class EmailService {
         String body = buildEmailBody(message);
         Email email = new Email();
 
-        email.setRecipient(message.customerEmail());
+        email.setRecipient(message.customerName());
         email.setSubject("Orderbekräftelse");
         email.setMessage(body);
+
+        System.out.println("EMAIL: " + email);
 
         messageService.send(email);
     }
@@ -32,20 +32,18 @@ public class EmailService {
 
         stringBuilder.append("Tack för din beställning!\n\n")
                 .append("Ordernummer: " + message.id()).append("\n")
-                .append("Email: " + message.customerEmail()).append("\n")
+                .append("Email: " + message.customerName()).append("\n")
                 .append("Datum: " + message.orderDate()).append("\n\n");
 
         for (OrderItemDto item : message.items()) {
-            BigDecimal itemTotal =
-                    item.price().multiply(BigDecimal.valueOf(item.quantity()));
 
-            stringBuilder.append(item.productName())
+            stringBuilder.append(item.name())
                     .append(" x ")
                     .append(item.quantity())
                     .append(" - ")
                     .append(item.price())
                     .append(" kr/st = ")
-                    .append(itemTotal)
+                    .append(item.lineTotal())
                     .append(" kr")
                     .append("\n");
         }
